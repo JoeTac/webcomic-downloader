@@ -27,28 +27,30 @@ newdir(join(root_dir, str(year)))
 newdir(join(root_dir, str(year), month_name[month]))
 while True:
 	last_day = monthrange(year, month)[1]
-	if year==today.year:
+	if year==today.year and month==today.month and day>today.day:
 		break
 
-	url = server % (year, year, month, day)
-	rhttp = request.urlopen(url)
-	
-	print("Downloading %s" % url)
-
-	if rhttp.reason!='OK':
-		print("ERROR: " + rhttp.reason)
-
-		f = open(join(root_dir, "errors.log"), "a")
-		f.write(rhttp.reason + " " + url)
-		f.close()
-		continue
-	
-	bytes = rhttp.read()
 	fname = "%04d-%02d-%02d.gif" % (year, month, day)
-	f = open(join(root_dir, str(year), month_name[month], fname), "wb")
-	f.write(bytes)
-	f.close()
-	sleep(sleep_time)
+	save_location = join(root_dir, str(year), month_name[month], fname)
+
+	if exists(save_location)==False:
+		url = server % (year, year, month, day)
+		rhttp = request.urlopen(url)
+		
+		print("Downloading %s" % url)
+
+		if rhttp.reason!='OK':
+			print("ERROR: " + rhttp.reason)
+			f = open(join(root_dir, "errors.log"), "a")
+			f.write(rhttp.reason + " " + url)
+			f.close()
+			continue
+	
+		bytes = rhttp.read()
+		f = open(save_location, "wb")
+		f.write(bytes)
+		f.close()
+		sleep(sleep_time)
 
 	day = day + 1
 	if day>last_day:

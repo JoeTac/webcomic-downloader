@@ -9,7 +9,7 @@ except:
     compression = zipfile.ZIP_STORED
 
 i = 0
-url_pattern = "http://sssscomic.com/adv2_comicpages/page_{0:d}.jpg{0:d}"
+url_pattern = "http://sssscomic.com/adv2_comicpages/page_{0:d}.jpg"
 file_pattern = "{0:04d}.jpg"
 save_path = "comic/adventure 2"
 progress = "Downloading {0}..."

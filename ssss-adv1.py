@@ -11,7 +11,7 @@ except:
 i = 0
 url_pattern = "http://www.sssscomic.com/comicpages/{0:d}.jpg"
 file_pattern = "{0:04d}.jpg"
-save_path = "comic"
+save_path = "comic/adventure 1"
 progress = "Downloading {0}..."
 zipping = "Writing cbz [{0}]..."
 

@@ -37,7 +37,8 @@ chapters = {
 	"Chapter 18": 863,
 	"Chapter 19": 899,
 	"Chapter 20": 924,
-	"Chapter 21": 0
+	"Chapter 21": 975,
+	"Chapter 22": 0,
 }
 
 if not os.path.exists(save_path):
